@@ -4,9 +4,9 @@ class ItemsController < ApplicationController
     def create
       @item = @list.items.build(item_params)
       if @item.save
-        redirect_to @list, notice: 'Item added'
+        redirect_to @list, notice: 'Item adicionado com sucesso.'
       else
-        redirect_to @list, alert: 'Item not added'
+        redirect_to @list, alert: 'Não foi possível adicionar o item.'
       end
     end
   
@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
     def destroy
       @item = @list.items.find(params[:id])
       @item.destroy
-      redirect_to @list, notice: 'Item removed'
+      redirect_to @list, notice: 'Item removido com sucesso.'
     end
   
     private
@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
     end
   
     def item_params
-      params.require(:item).permit(:content, :completed)
+      params.require(:item).permit(:content)
     end
   end
   

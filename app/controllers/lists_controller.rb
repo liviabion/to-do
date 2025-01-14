@@ -10,7 +10,9 @@ class ListsController < ApplicationController
   
     def new
       @list = List.new
+      @lists = List.all
     end
+    
   
     def create
       @list = List.new(list_params)
@@ -24,8 +26,8 @@ class ListsController < ApplicationController
     def destroy
       @list = List.find(params[:id])
       @list.destroy
-      redirect_to lists_path, notice: 'List removed'
-    end
+      redirect_to lists_path, notice: 'Lista removida com sucesso.'
+    end    
   
     private
   

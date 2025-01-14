@@ -1,0 +1,25 @@
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Minhas Listas</h1>
+
+  <div class="text-center mb-3">
+    <%= link_to 'Nova Lista', new_list_path, class: 'btn btn-primary' %>
+  </div>
+
+  <div class="row">
+    <% @lists.each do |list| %>
+      <div class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= link_to list.name, list, class: 'text-decoration-none' %>
+            </h5>
+            <p class="card-text">
+              <small class="text-muted">Criado em <%= list.created_at.strftime("%d/%m/%Y") %></small>
+            </p>
+            <%= button_to 'Remover', list, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Tem certeza?' } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
